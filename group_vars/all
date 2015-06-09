@@ -1,0 +1,4 @@
+---
+os_image: CentOS-6.0-v1.0
+os_flavor: m1.medium
+
