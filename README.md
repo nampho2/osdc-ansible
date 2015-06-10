@@ -9,15 +9,15 @@ As a hack around getting some aspects of Ansible to work I manually booted up 1 
 
 ```
 # add your ssh-key for future vm
-$ nova keypair-add --pub_key ~/.ssh/id_rsa.pub npho
+$ nova keypair-add --pub_key ~/.ssh/id_rsa.pub ansible_key
 
 # spin up head node
-$ nova boot --flavor m1.medium --image 0e50e989-9b33-442f-8e3b-227c41296c88 --key_name npho hn1; 
+$ nova boot --flavor m1.medium --image 0e50e989-9b33-442f-8e3b-227c41296c88 --key_name ansible_key hn1; 
 
 # spin up compute nodes with the remaining cores
 $ for i in {1..7}; 
 do 
-   nova boot --flavor m1.medium --image 0e50e989-9b33-442f-8e3b-227c41296c88 --key_name npho cn$i; 
+   nova boot --flavor m1.medium --image 0e50e989-9b33-442f-8e3b-227c41296c88 --key_name ansible_key cn$i; 
 done
 ```
 
