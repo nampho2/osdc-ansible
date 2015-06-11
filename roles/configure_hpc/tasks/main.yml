@@ -1,3 +1,48 @@
 ---
 - name: stage openlava rpm locally 
-  copy: src=openlava-2.2-1.x86_64.rpm dest=/tmp/openlava-2.2-1.x86_64.rpm owner=ubuntu group=ubuntu mode=0755
+  copy: src=openlava-2.2-1.x86_64.rpm dest=/tmp/openlava.rpm owner=ubuntu group=ubuntu mode=0755
+
+- name: install packages
+  yum: name={{ item }} state=latest
+  with_items:
+    - epel-release
+    - tcl
+
+- name: install openlava 
+  yum: name=/tmp/openlava.rpm state=present
+
+- name: enable and start openlava service
+  service: name=openlava enabled=yes state=started
+
+- name: source the profile
+  lineinfile: 
+    dest: /home/{{ item }}/.bashrc
+    regexp: '. /etc/profile.d/openlava.sh'
+    insertbefore: "EOF"
+    line: '. /etc/profile.d/openlava.sh'
+    create: yes
+  with_items:
+    - root
+    - openlava
+    - ubuntu
+
+- name: openlava cluster configuration
+#  template: src=lsf.cluster.openlava.j2 dest=/opt/openlava-2.2/etc/lsf.cluster.openlava
+  copy: src=lsf.cluster.openlava.j2 dest=/opt/openlava-2.2/etc/lsf.cluster.openlava owner=openlava group=openlava mode=0444
+
+- name: install lsb.hosts file
+#  template: src=lsb.hosts.j2 dest=/opt/openlava-2.2/etc/lsb.hosts owner=ubuntu group=ubuntu mode=0444
+  copy: src=lsb.hosts.j2 dest=/opt/openlava-2.2/etc/lsb.hosts owner=openlava group=openlava mode=0444
+
+- name: install lsf.cluster file 
+#  template: src=lsf.cluster.openlava.j2 dest=/opt/openlava-2.2/etc/lsf.cluster.openlava
+  copy: src=lsf.cluster.openlava.j2 dest=/opt/openlava-2.2/etc/lsf.cluster.openlava owner=openlava group=openlava mode=0444
+
+- name: install lsf.conf file
+  copy: src=lsf.conf dest=/opt/openlava-2.2/etc/lsf.conf owner=openlava group=openlava mode=0444
+
+- name: make all files openlava owned
+  file: path=/opt/openlava-2.2 owner=openlava group=openlava recurse="yes"
+
+- name: restart openlava service
+  service: name=openlava state=restarted

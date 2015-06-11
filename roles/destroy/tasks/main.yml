@@ -1,6 +1,6 @@
 ---
 - name: prompt for removal of all openstack machines
-  pause: prompt="You are about to remove all OpenStack virtual machines. This can not be undone, press any key to continue."
+  pause: prompt="You are about to remove all OpenStack virtual machines. This can not be undone, press any key to continue"
 
 - name: remove all vms
   nova_compute:
