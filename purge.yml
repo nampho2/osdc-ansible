@@ -1,0 +1,5 @@
+---
+- name: purge all openstack vms 
+  hosts: os_ctrl 
+  roles: 
+    - destroy 
