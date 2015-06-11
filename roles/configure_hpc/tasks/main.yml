@@ -1,2 +1,3 @@
 ---
-- name: 
+- name: stage openlava rpm locally 
+  copy: src=openlava-2.2-1.x86_64.rpm dest=/tmp/openlava-2.2-1.x86_64.rpm owner=ubuntu group=ubuntu mode=0755
