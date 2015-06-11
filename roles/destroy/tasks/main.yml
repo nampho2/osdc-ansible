@@ -1,0 +1,22 @@
+---
+- name: prompt for removal of all openstack machines
+  pause: prompt="You are about to remove all OpenStack virtual machines. This can not be undone, press any key to continue."
+
+- name: destroy all vms
+  nova_compute:
+    name: "{{ item }}"
+
+    flavor_id: "{{ os_flavor }}"
+    image_id: "{{ os_image }}"
+    key_name: "{{ os_key }}"
+    state: absent
+
+    auth_url: "{{ lookup('env', 'OS_AUTH_URL') }}"
+    login_username: "{{ lookup('env', 'OS_USERNAME') }}"
+    login_password: "{{ lookup('env', 'OS_PASSWORD') }}"
+    login_tenant_name: "{{ lookup('env', 'OS_TENANT_NAME') }}"
+  with_items: groups.cluster
+
+- name: confirm the vms are shut down 
+  wait_for: host={{ item }} port=22 state=stopped 
+  with_items: groups.cluster
