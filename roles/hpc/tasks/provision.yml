@@ -25,3 +25,6 @@
     login_tenant_name: "{{ lookup('env', 'OS_TENANT_NAME') }}"
   with_items: groups.cluster
 
+- name: confirm ssh running on vms 
+  wait_for: host={{ item }} port=22 state=started 
+  with_items: groups.cluster
