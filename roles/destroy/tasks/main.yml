@@ -2,7 +2,7 @@
 - name: prompt for removal of all openstack machines
   pause: prompt="You are about to remove all OpenStack virtual machines. This can not be undone, press any key to continue."
 
-- name: destroy all vms
+- name: remove all vms
   nova_compute:
     name: "{{ item }}"
 
