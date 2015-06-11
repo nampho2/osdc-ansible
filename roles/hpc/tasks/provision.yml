@@ -15,7 +15,7 @@
     name: "{{ item }}"
 
     flavor_id: "{{ os_flavor }}"
-    image_name: "{{ os_image }}"
+    image_id: "{{ os_image }}"
     key_name: "{{ os_key }}"
     state: present
 
