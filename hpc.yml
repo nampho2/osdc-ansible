@@ -1,0 +1,5 @@
+---
+- name: setup a hpc cluster in openstack
+  hosts: os_ctrl
+  roles:
+    - hpc

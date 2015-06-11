@@ -1,0 +1,17 @@
+#
+# osdc hosts
+#
+
+[os_ctrl]
+loginnode	ansible_ssh_user=npho	ansible_ssh_private_key_file=/glusterfs/users/npho/.ssh/osdc.pem
+
+[cluster:children]
+hn
+cn
+
+[hn]
+hn1
+
+[cn]
+cn[1:7]
+
