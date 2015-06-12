@@ -27,11 +27,9 @@ do
 done
 ```
 
-<a href="https://portal.xsede.org/knowledge-base/-/kb/document/bdwx">XSEDE YUM repository</a>
-
 **References**
 
-Methods For Creating XSEDE Compatible Clusters [<a href="https://www.cac.cornell.edu/about/pubs/a74-fischer.pdf">PDF</a>]
+Methods For Creating XSEDE Compatible Clusters [<a href="https://www.cac.cornell.edu/about/pubs/a74-fischer.pdf">PDF</a>] [<a href="https://portal.xsede.org/knowledge-base/-/kb/document/bdwx">YUM</a>]
 
 **ELK Playbook** <br />
 
