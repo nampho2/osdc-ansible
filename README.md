@@ -5,7 +5,13 @@ Run the `openrc.sh` script to configure your environment with the `OS_PASSWORD`,
 
 **HPC Playbook** <br />
 
-As a hack around getting some aspects of Ansible to work I manually booted up 1 head node and 7 compute nodes to fulfill my 16 core quota withe following code from the OpenStack login node. This will be retroactively Ansible-ized.
+Simply run the `hpc.yml` playbook to setup your cluster.
+
+```
+$ ansible-playbook hpc.yml
+```
+
+Ansible is meant to replace manual commands below but one can also setup the machines with the following commands.
 
 ```
 # add your ssh-key for future vm
