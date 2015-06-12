@@ -11,6 +11,12 @@ Simply run the `hpc.yml` playbook to setup your cluster.
 $ ansible-playbook hpc.yml
 ```
 
+Once the Ansible run finishes you can log into the head node and submit jobs immediately.
+
+```
+$ ssh root@hn1
+```
+
 Ansible is meant to replace manual commands below but one can also setup the machines with the following commands.
 
 ```
