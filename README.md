@@ -27,9 +27,12 @@ do
 done
 ```
 
-HPC on OSDC
 <a href="https://portal.xsede.org/knowledge-base/-/kb/document/bdwx">XSEDE YUM repository</a>
+
+**References**
+
 Methods For Creating XSEDE Compatible Clusters [<a href="https://www.cac.cornell.edu/about/pubs/a74-fischer.pdf">PDF</a>]
 
 **ELK Playbook** <br />
-TODO
+
+Future plans are to create a playbook to deploy Elasticsearch, Logstash, and Kibana clusters to analyze public data sets on OSDC.
